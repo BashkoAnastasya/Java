@@ -2,7 +2,6 @@ package com.intexsoft.bashko.anastasiya;
 
 import java.util.Scanner;
 import java.math.*;
-import java.util.Arrays;
 
 public class PointToArea {
 	static Scanner scan = new Scanner(System.in);
@@ -13,19 +12,19 @@ public class PointToArea {
 
 		if (point_x < 1 & point_x > 0 & point_x < Math.sqrt(point_y + 1) & point_y > 0 & point_y < 1
 				& point_y < (point_x - 1) * (point_x - 1)) {
-			System.out.println("Òî÷êà âõîäèò â îáëàñòü");
+			System.out.println("Ã’Ã®Ã·ÃªÃ  Ã¢ÃµÃ®Ã¤Ã¨Ã² Ã¢ Ã®Ã¡Ã«Ã Ã±Ã²Ã¼");
 		} else {
-			System.out.println("Òî÷êà íå âõîäèò â îáëàñòü");
+			System.out.println("Ã’Ã®Ã·ÃªÃ  Ã­Ã¥ Ã¢ÃµÃ®Ã¤Ã¨Ã² Ã¢ Ã®Ã¡Ã«Ã Ã±Ã²Ã¼");
 		}
 	}
 
 	public static double getDouble() {
-		System.out.print("Ââåäèòå êîîðäèíàòû òî÷êè:");
+		System.out.print("Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ ÃªÃ®Ã®Ã°Ã¤Ã¨Ã­Ã Ã²Ã» Ã²Ã®Ã·ÃªÃ¨:");
 		double num;
 		if (scan.hasNextDouble()) {
 			num = scan.nextDouble();
 		} else {
-			System.out.println("Ââåäåíû íå êîîðåêòíûå äàííûå. Ïîïðîáóéäå åùå ðàç");
+			System.out.println("Ã‚Ã¢Ã¥Ã¤Ã¥Ã­Ã» Ã­Ã¥ ÃªÃ®Ã®Ã°Ã¥ÃªÃ²Ã­Ã»Ã¥ Ã¤Ã Ã­Ã­Ã»Ã¥. ÃÃ®Ã¯Ã°Ã®Ã¡Ã³Ã©Ã¤Ã¥ Ã¥Ã¹Ã¥ Ã°Ã Ã§");
 			scan.next();
 			num = getDouble();
 		}
