@@ -9,10 +9,12 @@ public class SquareArrays {
 
 	public static void main(String[] args) {
 
-		System.out.print("Ââåäèòå ðàçìåðíîñòü êâàäðàòíîé ìàòðèöû: ");
-		int rang = scan.nextInt();
-		int[][] squareArrays = new int[rang][rang];
-		int k = Math.round(rang / 2);
+		System.out.println("Введите количество строк");
+		int countRow = scan.nextInt();
+		System.out.println("Введите количество столбцов");
+		int countColum = scan.nextInt();	
+		int[][] squareArrays = new int[countRow][countColum];
+		int k = Math.round(countRow / 2);
 
 		for (int d = 0; d <= k; d++) {
 			for (int i = d; i < squareArrays.length - d; i++) {
