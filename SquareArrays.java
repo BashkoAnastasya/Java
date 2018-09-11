@@ -9,14 +9,14 @@ public class SquareArrays {
 
 	public static void main(String[] args) {
 
-		System.out.print("Введите размерность квадратной матрицы: ");
+		System.out.print("Г‚ГўГҐГ¤ГЁГІГҐ Г°Г Г§Г¬ГҐГ°Г­Г®Г±ГІГј ГЄГўГ Г¤Г°Г ГІГ­Г®Г© Г¬Г ГІГ°ГЁГ¶Г»: ");
 		int rang = scan.nextInt();
 		int[][] squareArrays = new int[rang][rang];
 		int k = Math.round(rang / 2);
 
 		for (int d = 0; d <= k; d++) {
-			for (int i = 0 + d; i < squareArrays.length - d; i++) {
-				for (int j = 0 + d; j < squareArrays[i].length - d; j++) {
+			for (int i = d; i < squareArrays.length - d; i++) {
+				for (int j = d; j < squareArrays[i].length - d; j++) {
 					squareArrays[i][j] = d + 1;
 				}
 			}
