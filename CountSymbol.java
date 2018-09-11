@@ -9,15 +9,14 @@ public class CountSymbol {
 
 	public static void main(String[] args) {
 		System.out.println("¬ведите строку");
-		String str = scan.next();
-		char[] array = str.toCharArray();
-		char[] symbol = new char[array.length+1];
-		int [] count = new int[array.length+1];
+		String str = scan.next();	
+		char[] symbol = new char[str.length()+1];
+		int [] count = new int[str.length()+1];
 		int j = 0;		
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] != symbol[j]) {
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) != symbol[j]) {
 				j = j + 1;
-				symbol[j] = array[i];
+				symbol[j] = str.charAt(i);
 				count[j] = 1;
 			} else {
 				count[j] = count[j] + 1;
