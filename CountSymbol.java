@@ -8,18 +8,18 @@ public class CountSymbol {
 	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		System.out.println("¬ведите строку");
+		System.out.println("Enter string");
 		String str = scan.next();	
 		char[] symbol = new char[str.length()+1];
 		int [] count = new int[str.length()+1];
 		int j = 0;		
 		for (int i = 0; i < str.length(); i++) {
 			if (str.charAt(i) != symbol[j]) {
-				j = j + 1;
+				j +=  1;
 				symbol[j] = str.charAt(i);
 				count[j] = 1;
 			} else {
-				count[j] = count[j] + 1;
+				count[j] += 1;
 			}
 		}
 
