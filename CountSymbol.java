@@ -2,7 +2,7 @@ package com.intexsoft.bashko.anastasiya;
 
 public class CountSymbol {
 
-	public static void main(String[] strrgs) {
+	public static void main(String[] args) {
 		String str = "strstrstrstrstrbbbbbbstrstrstrstrccccccccccd";
 		str = str + " ";
 		String strnew = "";
