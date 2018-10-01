@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="priceWares">
+	<table class="table table-bordered table-hover horizontal-align">
+		<thead>
+			<tr>
+				<th style="width: 5%">#</th>		
+				<th style="width: 10%">Ware</th>
+				<th style="width: 5%">Date begin</th>
+				<th style="width: 5%">Date end</th>
+				<th style="width: 10%">Price</th>		
+				<th style="width: 10%">Edit</th>
+				<th style="width: 10%">Delete</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="priceWare : ${priceWares}">	
+				<td th:text="${priceWare.id}">Id</td>		
+				<td th:text="${priceWare.ware.name}">Ware</td>	
+				<td th:text="${priceWare.dbeg}">DateBeg</td>
+			    <td th:text="${priceWare.dend}">DateEnd</td>
+			    <td th:text="${priceWare.price}">Price</td>			   	
+			<td style="text-align: center"><a th:href="@{'/editpriceWare/{id}'(id=${priceWare.id})}"><i class="fa fa-edit" style="font-size:20px"></i></a></td>
+            <td style="text-align: center"><a th:href="@{'/deletepriceWare/{id}'(id=${priceWare.id})}"><i class="fa fa-trash" style="font-size:20px"></i></a></td>			
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</html>
