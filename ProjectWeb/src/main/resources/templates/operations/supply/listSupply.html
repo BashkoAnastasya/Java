@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="supplys">
-	<table class="table table-bordered table-hover horizontal-align">
+ <p>Click <a th:href="@{/newSupply}">here</a> to add supply.</p>
+	<table class="table table-bordered table-hover horizontal-align">	 
 		<thead>
 			<tr>
 				<th style="width: 5%">#</th>
@@ -15,8 +16,7 @@
 				<th style="width: 10%">Summa</th>
 				<th style="width: 10%">NDS</th>
 				<th style="width: 10%">Edit</th>
-				<th style="width: 10%">Delete</th>
-				
+				<th style="width: 10%">Delete</th>				
 			</tr>
 		</thead>
 		<tbody>

@@ -5,6 +5,7 @@ import com.programmer.gate.domain.Supply;
 import com.programmer.gate.repos.SupplyRepo;
 import com.programmer.gate.domain.State;
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -50,6 +51,7 @@ public class SupplyServiceImpl implements SupplyService{
 	public List<Supply> findAll() {	
 		return (List<Supply>) repository.findAll();
 	}
+	
 	
 
 }

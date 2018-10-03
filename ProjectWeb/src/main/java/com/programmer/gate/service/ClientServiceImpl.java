@@ -2,6 +2,7 @@ package com.programmer.gate.service;
 
 import  org.springframework.beans.factory.annotation.Autowired;
 import  com.programmer.gate.domain.Client;
+
 import  org.springframework.stereotype.Service;
 import  com.programmer.gate.repos.ClientRepo;
 import  java.util.List;
@@ -50,6 +51,20 @@ public class ClientServiceImpl implements ClientService{
 	public List<Client> findByName(String name) {
 		return repository.findByName(name);
 	}
+	
+	@Override
+	public List<Client> filter(String filterName,String filterMoniker) {
+	       List<Client> clients;
+
+	        if (filterName != null && !filterName.isEmpty()) {
+	        	clients = repository.findByName(filterName);
+	        } else {
+	        	clients = repository.findAll();
+	        }
+				
+		return  clients;
+	}
+	
 	
 
 }

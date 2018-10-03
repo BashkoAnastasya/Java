@@ -3,6 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="supplyStrs">
+ <p>Click <a th:href="@{/newSupplyStr}">here</a> to add SupplyStr.</p>
+ <div th:if="${param.error}">Invalid username and password.</div>
 	<table class="table table-bordered table-hover horizontal-align">
 		<thead>
 			<tr>
@@ -28,8 +30,8 @@
 			    <td th:text="${supplyStr.qty}">Qty</td>
 			    <td th:text="${supplyStr.summa}">Summa</td>	
 			    <td th:text="${supplyStr.nds}">Nds</td>	
-			<td style="text-align: center"><a th:href="@{'/editSupplyStr/{id}'(id=${supplyStr.id})}"><i class="fa fa-edit" style="font-size:20px"></i></a></td>
-            <td style="text-align: center"><a th:href="@{'/deleteSupplyStr/{id}'(id=${supplyStr.id})}"><i class="fa fa-trash" style="font-size:20px"></i></a></td>			
+			   <td style="text-align: center"><a th:href="@{'/editSupplyStr/{id}'(id=${supplyStr.id})}"><i class="fa fa-edit" style="font-size:20px"></i></a></td>
+              <td style="text-align: center"><a th:href="@{'/deleteSupplyStr/{id}'(id=${supplyStr.id})}"><i class="fa fa-trash" style="font-size:20px"></i></a></td>			
 			</tr>
 		</tbody>
 	</table>

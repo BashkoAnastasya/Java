@@ -22,7 +22,7 @@ import com.programmer.gate.service.WareService;
 
 @Controller
 public class WareController {
-
+	
 	private WareService wareService;
 	
 	@Autowired
@@ -65,7 +65,10 @@ public class WareController {
 
 	
     @GetMapping("/newWare")
-    public String newWare() {
+    public String newWare(Map<String, Object> model) {
+    	
+    	Iterable<Models> models= modelRepo.findAll();    	
+    	model.put("models", models);  	
     	
         return "operations/ware/newWare";        
     }
@@ -78,8 +81,7 @@ public class WareController {
     	wareService.saveWare( new Ware(model,  moniker,  name,  szOrig,  szRus));    	
     	
         return "redirect:/operations/ware/listWare";
-    }
-    
+    }    
         
 	@GetMapping("/deleteWare/{id}")
 	public String deleteWare(@PathVariable Integer id) {

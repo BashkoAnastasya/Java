@@ -17,8 +17,8 @@ import com.programmer.gate.service.SupplierService;
 import com.programmer.gate.service.SupplyService;
 import com.programmer.gate.repos.StateRepo;
 
-import java.text.*;
 
+import java.text.*;
 import java.util.Date;
 import java.util.List;
 
@@ -51,7 +51,7 @@ public class SupplyController {
 	}
 
 	@GetMapping("/editSupply/{id}")
-	public String editSupply(@PathVariable Integer id, Model model,Map<String, Object> model2, Map<String, Object> model3) {
+	public String editSupply(@PathVariable Integer id,  Model model,Map<String, Object> model2, Map<String, Object> model3) {
 
 		List<State> states=stateRepo.findAll();
 		model3.put("states", states);	
@@ -60,7 +60,7 @@ public class SupplyController {
 		model2.put("suppliers", suppliers);	
 
 		Supply supply = supplyService.getSupplyById(id);
-
+        
 		model.addAttribute("supply", supply);
 
 		return "operations/supply/editSupply";

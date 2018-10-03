@@ -20,6 +20,7 @@ import com.programmer.gate.service.SupplyService;
 import com.programmer.gate.service.WareService;
 
 import java.math.BigDecimal;
+
 import java.util.List;
 
 @Controller
@@ -66,7 +67,7 @@ public class SupplyStrController {
 
 		model.addAttribute("supplyStr", supplyStr);
 
-		return "operations/supply/editSupply";
+		return "operations/supplyStr/editSupplyStr";
 	}
 
 
@@ -75,25 +76,25 @@ public class SupplyStrController {
 			) {
 		Ware ware= wareService.getWareById(ware_id);		
 
-		Supply supply=supplyService.getSupplyById(supply_id); 
+		Supply supply=supplyService.getSupplyById(supply_id); 		
 
 		supplyStrService.updateSupplyStr(id,num,price,qty,ware,supply);
-
-		return "redirect:/supply";
+		
+		return "redirect:/supplyStr";		
 	}
 
 
 	@GetMapping("/newSupplyStr")
-	public String newSupplyStr(Map<String, Object> model,Map<String, Object> model2) {
+	public String newSupplyStr(Map<String, Object> modelSupply,Map<String, Object> modelWare) {
 
 
-		List<Supply> supply=supplyService.findAll();
-		model2.put("supply", supply);	
+		List<Supply> supplys=supplyService.findAll();
+		modelSupply.put("supplys", supplys);	
 
 		List<Ware> wares=wareService.findAll();
-		model.put("wares", wares);
+		modelWare.put("wares", wares);
 
-		return "operations/supply/newSupply";        
+		return "operations/supplyStr/newSupplyStr";        
 	}
 
 	@GetMapping("/deleteSupplyStr/{id}")
@@ -111,9 +112,13 @@ public class SupplyStrController {
 
 		Supply supply=supplyService.getSupplyById(supply_id); 
 
-		supplyStrService.saveSupplyStr(new SupplyStr(num,price,qty,ware,supply));
+		try{
+			supplyStrService.saveSupplyStr(new SupplyStr(num,price,qty,ware,supply));
+		}catch (Exception  ex ){
+			System.out.println("The document can not be changed");          
+		}
 
-		return "redirect:/supply";
+		return "redirect:/supplyStr";
 	}
 
 
@@ -126,7 +131,7 @@ public class SupplyStrController {
 		List<Ware> wares=wareService.findAll();
 		model2.put("wares", wares);	
 
-		return "supply";
+		return "supplyStr";
 	}
 
 }

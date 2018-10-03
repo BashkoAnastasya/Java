@@ -7,12 +7,12 @@
 <div class="container">
     <div th:replace="fragments/header :: header"></div>
     <div class="container">
-        <form class="form-horizontal" th:object="${ware}"  th:action="@{/saveware}" name="input_form" id="input_form"
+        <form class="form-horizontal" th:object="${ware}"  th:action="@{/saveWare}" name="input_form" id="input_form"
               method="post" role="form">
             <div class="form-group">
                 <input type="text" class="form-control" id="name" th:name="name" placeholder="Enter your name ware." maxlength="100"/>
                 <input type="text" class="form-control" id="moniker" th:name="moniker" placeholder="Enter your moniker" maxlength="100"/>               
-                <select th:field="*{model}">
+                <select id="model" name="model">
 						<option th:each="model : ${models}"
 						th:value="${model.id}" th:text="${model.name}"></option>
 				</select>	

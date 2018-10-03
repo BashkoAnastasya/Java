@@ -45,7 +45,7 @@ public class SupplierController {
     	
         Iterable<Supplier> suppliers;
 
-        suppliers=supplierService.filter(filter_name, filter_moniker);
+        suppliers=supplierService.findByNameAndMoniker(filter_name,filter_moniker);
 
         model.put("suppliers", suppliers);
 
@@ -83,7 +83,7 @@ public class SupplierController {
     	
     	supplierService.saveSupplier(new Supplier(name,moniker));
     	
-        return "redirect:/operations/supplier/list";
+        return "redirect:/filter";
     }
             
 	@GetMapping("/delete/{id}")

@@ -11,6 +11,7 @@ public interface ClientService {
 	   void deleteClient (Integer id);	   
 	   List<Client> findAll();
 	   List<Client> findByName(String name);
+	   List<Client> filter(String filterName,String filterMoniker);
 }
 
 

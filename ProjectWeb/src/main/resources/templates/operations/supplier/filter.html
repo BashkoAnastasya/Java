@@ -10,26 +10,32 @@
         <form class="form-horizontal" th:object="${supplier}" th:action="@{/filter}" name="filter_form" id="filter_form"
               method="post" role="form">
 				<div>
-					<thead>
-						<tr>
-							<th style="width: 60%">Name</th>
-							<th style="width: 5%">Moniker</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<div class="form-group">
-								<input type="text" class="form-control" id="filter_name"
-									th:name="filter_name" maxlength="100" /> <input type="text"
-									class="form-control" id="filter_moniker"
-									th:name="filter_moniker" maxlength="100" />
-							</div>
-						</tr>
-					</tbody>
+					<table class="table table-bordered table-hover horizontal-align">
+						<thead>
+							<tr>
+								<th style="width: 10%">Filter Name</th>
+								<th style="width: 5%">Filter Moniker</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<div class="form-group">
+									<th> <input type="text" class="form-control" id="filter_name"
+										th:name="filter_name" maxlength="100" /> </th> 
+										
+										 <th> <input type="text"
+										class="form-control" id="filter_moniker"
+										th:name="filter_moniker" maxlength="100" /> </th>
+								</div>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+    <p>Click <a th:href="@{/new}">here</a> to add supplier.</p>
 </div>
 <div th:fragment="suppliers">
     <table class="table table-bordered table-hover horizontal-align">
@@ -46,7 +52,7 @@
         <tr th:each="supplier : ${suppliers}">
             <td th:text="${supplier.id}" style="text-align: center">#</td>
             <td th:text="${supplier.name}">Name</td> 
-              <td th:text="${supplier.moniker}">Moniker</td>           
+            <td th:text="${supplier.moniker}">Moniker</td>           
             <td style="text-align: center"><a th:href="@{'/edit/{id}'(id=${supplier.id})}"><i class="fa fa-edit" style="font-size:20px"></i></a></td>
             <td style="text-align: center"><a th:href="@{'/delete/{id}'(id=${supplier.id})}"><i class="fa fa-trash" style="font-size:20px"></i></a></td>
         </tr>

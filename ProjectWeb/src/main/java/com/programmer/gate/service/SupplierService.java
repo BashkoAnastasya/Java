@@ -12,6 +12,7 @@ public interface SupplierService {
 	   List<Supplier> findAll();
 	   List<Supplier> findByName(String name);
 	   List<Supplier> filter(String name,String moniker);
-}
+	   List <Supplier> findByNameAndMoniker(String name,String moniker);
+	 }
 
 

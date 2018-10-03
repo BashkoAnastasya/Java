@@ -7,52 +7,46 @@
 	<div class="container">
 		<div th:replace="fragments/header :: header"></div>
 		<div class="container">
-			<form class="form-horizontal" th:object="${supply}"
-				th:action="@{/updateSupply}" name="edit_form" id="edit_form"
+			<form class="form-horizontal" th:object="${supplyStr}"
+				th:action="@{/updateSupplyStr}" name="edit_form" id="edit_form"
 				method="post" role="form">
 				<div class="form-group">
 					<input type="hidden" id="id" th:name="id" th:value="*{id}" />
 				</div>
-				<div>
-					<th style="width: 5%">#</th>
-					<th style="width: 5%">Num</th>
-					<th style="width: 10%">Supply</th>
-					<th style="width: 10%">Ware</th>
-					<th style="width: 5%">Price</th>
-					<th style="width: 10%">Qty</th>
-					<th style="width: 10%">Summa</th>
-					<th style="width: 10%">Nds</th>				
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" id="num" th:name="num"
-						th:value="num" maxlength="100" /> 						
-						<select th:field="*{supply}">
-						<option th:each="supply : ${supplys}" th:value="${supply.id}"
-							th:text="${supply.code}"></option>
-				     	</select>
-				     	
-						<select th:field="*{ware}">
-						<option th:each="ware : ${wares}" th:value="${ware.id}"
-							th:text="${ware.name}"></option>
-				     	</select>	
-				     				     									
-						<input type="number"
-						class="form-control" id="price" th:name="price" th:value="*{}"
-						maxlength="100" /> 
-						
-						<input type="number"
-						class="form-control" id="qty" th:name="qty" th:value="*{}"
-						maxlength="100" />
-						
-						<input type="number"
-						class="form-control" id="summa" th:name="summa" th:value="*{}"
-						maxlength="100" />
-						
-						<input type="number"
-						class="form-control" id="nds" th:name="nds" th:value="*{}"
-						maxlength="100" />						
-				
-				</div>
+				<table class="table table-bordered table-hover horizontal-align">
+					<thead>
+						<tr>
+							<th style="width: 5%">Num</th>
+							<th style="width: 10%">Supply</th>
+							<th style="width: 10%">Ware</th>
+							<th style="width: 5%">Price</th>
+							<th style="width: 10%">Qty</th>
+							<th style="width: 10%">Summa</th>
+							<th style="width: 10%">Nds</th>
+						</tr>
+					</thead>
+					<tbody>
+						<div class="form-group">
+							<input type="text" class="form-control" id="num" th:name="num"
+								th:value="num" maxlength="100" /> <select th:field="*{supply}">
+								<option th:each="supply : ${supplys}" th:value="${supply.id}"
+									th:text="${supply.num}"></option>
+							</select> <select th:field="*{ware}">
+								<option th:each="ware : ${wares}" th:value="${ware.id}"
+									th:text="${ware.name}"></option>
+							</select> <input type="number" class="form-control" id="price"
+								th:name="price" th:value="*{price}" maxlength="100" /> <input
+								type="number" class="form-control" id="qty" th:name="qty"
+								th:value="*{qty}" maxlength="100" /> 
+								<input disabled
+								type="number" class="form-control" id="summa" th:name="summa"
+								th:value="*{summa}" maxlength="100" /> 
+								<input disabled
+								type="number" class="form-control" id="nds" th:name="nds"
+								th:value="*{nds}" maxlength="100" />
+						</div>
+					</tbody>
+				</table>
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
 		</div>

@@ -1,6 +1,9 @@
 package com.programmer.gate.service;
 
 import  org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+
 import  com.programmer.gate.domain.Supplier;
 import  org.springframework.stereotype.Service;
 import  com.programmer.gate.repos.SupplierRepo;
@@ -52,9 +55,10 @@ public class SupplierServiceImpl implements SupplierService{
 	@Override
 	public List<Supplier> filter(String filterName,String filterMoniker) {
 	       List<Supplier> suppliers;
+	     
 
 	        if (filterName != null && !filterName.isEmpty()) {
-	        	suppliers = repository.findByName(filterName);
+	        	suppliers = repository.findAll();
 	        } else {
 	        	suppliers = repository.findAll();
 	        }
@@ -62,7 +66,12 @@ public class SupplierServiceImpl implements SupplierService{
 		return  suppliers;
 	}
 	
+	@Override	
+ public List<Supplier>  findByNameAndMoniker(String name,String moniker){
+	 return repository.findByNameAndMoniker(name,moniker);
+ }
+ }
 
-}
+
 
 

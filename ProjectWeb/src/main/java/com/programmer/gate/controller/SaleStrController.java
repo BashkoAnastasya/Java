@@ -66,7 +66,7 @@ public class SaleStrController {
 
 		model.addAttribute("SaleStr", SaleStr);
 
-		return "operations/Sale/editSale";
+		return "operations/sale/editSale";
 	}
 
 
@@ -79,7 +79,7 @@ public class SaleStrController {
 
 		saleStrService.updateSaleStr(id,num,qty,ware,sale,discount);
 	
-		return "redirect:/Sale";
+		return "redirect:/sale";
 	}
 
 
@@ -93,7 +93,7 @@ public class SaleStrController {
 		List<Ware> wares=wareService.findAll();
 		model.put("wares", wares);
 
-		return "operations/Sale/newSale";        
+		return "operations/sale/newSale";        
 	}
 
 	@GetMapping("/deleteSaleStr/{id}")
@@ -114,7 +114,7 @@ public class SaleStrController {
 		saleStrService.saveSaleStr(new SaleStr(num,qty,ware,sale,discount));
 
 
-		return "redirect:/Sale";
+		return "redirect:/sale";
 	}
 
 
