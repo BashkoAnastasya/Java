@@ -74,7 +74,7 @@ public class SupplyController {
 
 		Supplier supplier=supplierService.getSupplierById(s_id); 
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 		Date convertedDate = new Date();
 
@@ -119,7 +119,7 @@ public class SupplyController {
 
 		Supplier supplier=supplierService.getSupplierById(supplier_id);    	
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 		Date convertedDate = new Date();
 

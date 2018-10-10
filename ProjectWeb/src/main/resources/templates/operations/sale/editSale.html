@@ -4,6 +4,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head"></head>
 <body>
+
 	<div class="container">
 		<div th:replace="fragments/header :: header"></div>
 		<div class="container">
@@ -13,30 +14,81 @@
 				<div class="form-group">
 					<input type="hidden" id="id" th:name="id" th:value="*{id}" />
 				</div>
-				<div>
-					<th style="width: 10%">Num</th>			
-					<th style="width: 10%">Date</th>
-					<th style="width: 5%">Client</th>
-					<th style="width: 10%">State</th>
-					<th style="width: 10%">Edit</th>
-					<th style="width: 10%">Delete</th>
-				</div>
-				<div class="form-group">					
-						<input type="text"
-						class="form-control" id="num" th:name="num" th:value="*{num}"
-						maxlength="100" /> <input type="date" class="form-control"
-						id="dt" th:name="dt" placeholder="*{dt}" maxlength="100" /> <select
-						th:field="*{client}">
-						<option th:each="client : ${clients}"
-							th:value="${client1.id}" th:text="${client1.name}"></option>
-					</select> <select th:field="*{state}">
-						<option th:each="state1 : ${states}" th:value="${state1.id}"
-							th:text="${state1.state}"></option>
-					</select>
-				</div>
+				<table class="table table-bordered table-hover horizontal-align ">
+					<thead>
+						<tr>
+							<th style="width: 10%">Num</th>
+							<th style="width: 10%">Date</th>
+							<th style="width: 10%">Discount</th>
+							<th style="width: 5%">Client</th>
+							<th style="width: 10%">State</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" class="form-control" id="num"
+								th:name="num" th:value="*{num}" maxlength="100" /></td>
+							<td><input type="date" class="form-control" id="dt"
+								th:name="dt" th:value="*{dt}" maxlength="100" /></td>
+							<td><input type="text" class="form-control" id="discount"
+								th:name="discount" th:value="*{discount}" maxlength="100" /></td>
+							<td><select th:field="*{client}">
+									<option th:each="client : ${clients}" th:value="${client.id}"
+										th:text="${client.name}"></option>
+							</select></td>
+							<td><select th:field="*{state}">
+									<option th:each="state : ${states}" th:value="${state.id}"
+										th:text="${state.state}"></option>
+							</select></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table class="table table-bordered table-hover horizontal-align">
+					<caption>SaleStr</caption>
+					<thead>
+						<tr>
+							<th style="width: 5%">#</th>
+							<th style="width: 5%">Num</th>
+							<th style="width: 10%">Sale</th>
+							<th style="width: 10%">Ware</th>
+							<th style="width: 5%">Price</th>
+							<th style="width: 10%">Qty</th>
+							<th style="width: 10%">Summa</th>
+							<th style="width: 10%">Nds</th>
+							<th style="width: 10%">Edit</th>
+							<th style="width: 10%">Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="saleStr : ${saleStrs}">
+							<td th:text="${saleStr.id}">Id</td>
+							<td th:text="${saleStr.num}">Num</td>
+							<td th:text="${saleStr.sale.num}">Sale</td>
+							<td th:text="${saleStr.ware.name}">Ware</td>
+							<td th:text="${saleStr.price}">Price</td>
+							<td th:text="${saleStr.qty}">Qty</td>
+							<td th:text="${saleStr.summa}">Summa</td>
+							<td th:text="${saleStr.nds}">Nds</td>
+							<td style="text-align: center"><a
+								th:href="@{'/editSaleStr/{id}'(id=${saleStr.id})}"><i
+									class="fa fa-edit" style="font-size: 20px"></i></a></td>
+							<td style="text-align: center"><a
+								th:href="@{'/deleteSaleStr/{id}'(id=${saleStr.id})}"><i
+									class="fa fa-trash" style="font-size: 20px"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
 				<button type="submit" class="btn btn-primary">Submit</button>
+
+
 			</form>
 		</div>
 	</div>
 </body>
+<script th:inline="javascript">
+/*<![CDATA[*/
+    var messages = /*[[${saleStrs}]]*/ ;
+    alert(messages);
+/*]]>*/
+</script>
 </html>

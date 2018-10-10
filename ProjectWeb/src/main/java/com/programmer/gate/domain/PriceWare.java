@@ -37,6 +37,17 @@ public class PriceWare {
 	@Column (name="price")
 	private BigDecimal price;	
 	
+	public PriceWare() {		
+	
+	}
+	
+	public PriceWare(Date dbeg, Date dend,BigDecimal price, Ware ware) {
+		this.dbeg=dbeg;
+		this.dend=dend;
+		this.price=price;
+		this.ware=ware;	
+	}
+
 	public Integer getId() {
 		return id;
 	}

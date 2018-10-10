@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<div>
+					<form th:action="@{/newClient}" method="get">
+						<input type="submit" value="Add" />
+					</form>
+				</div>
+			<form class="form-horizontal" th:object="${client}"
+				th:action="@{/filterClient}" name="filter_form" id="filter_form"
+				method="post" role="form">
+				<button type="submit" class="btn btn-primary">Submit</button>
+			
+				<table class="table table-bordered table-hover horizontal-align">
+					<thead>
+						<tr>
+							<th style="width: 25%">Name</th>
+							<th style="width: 25%">Moniker</th>
+							<th style="width: 25%">IsVip</th>
+							<th style="width: 25%">Town</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" class="form-control" id="name"
+								th:name="name" maxlength="100" /></td>
+							<td><input type="text" class="form-control" id="moniker"
+								th:name="moniker" maxlength="100" /></td>
+							<td><input type="text" class="form-control" id="isVip"
+								th:name="isVip" maxlength="100" /></td>
+							<td><input type="text" class="form-control" id="town"
+								th:name="town" maxlength="100" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+
+		</div>
+	</div>
+	<div th:fragment="clients">
+		<table class="table table-bordered table-hover horizontal-align">
+			<thead>
+				<tr>
+					<th style="width: 5%">#</th>
+					<th style="width: 20%">Name</th>
+					<th style="width: 20%">Moniker</th>
+					<th style="width: 20%">IsVip</th>
+					<th style="width: 20%">Town</th>
+					<th style="width: 5%">Edit</th>
+					<th style="width: 5%">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="client : ${clients}">
+					<td th:text="${client.id}" style="text-align: center">#</td>
+					<td th:text="${client.name}">Name</td>
+					<td th:text="${client.moniker}">Moniker</td>
+					<td th:text="${client.isVip}">isVip</td>
+					<td th:text="${client.town}">Town</td>
+					<td style="text-align: center"><a
+						th:href="@{'/editClient/{id}'(id=${client.id})}"><i
+							class="fa fa-edit" style="font-size: 20px"></i></a></td>
+					<td style="text-align: center"><a
+						th:href="@{'/deleteClient/{id}'(id=${client.id})}"><i
+							class="fa fa-trash" style="font-size: 20px"></i></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

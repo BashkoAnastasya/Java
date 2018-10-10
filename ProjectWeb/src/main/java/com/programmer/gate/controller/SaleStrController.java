@@ -59,33 +59,48 @@ public class SaleStrController {
 		List<Ware> wares=wareService.findAll();
 		model3.put("wares", wares);	
 
-		List<Sale> Sales=saleService.findAll();
-		model2.put("Sales", Sales);	
+		List<Sale> sales=saleService.findAll();
+		model2.put("sales", sales);	
 
-		SaleStr SaleStr = saleStrService.getSaleStrById(id);
+		SaleStr saleStr = saleStrService.getSaleStrById(id);
 
-		model.addAttribute("SaleStr", SaleStr);
+		model.addAttribute("saleStr", saleStr);
 
-		return "operations/sale/editSale";
+		return "operations/saleStr/editSaleStr";
 	}
 
 
 	@PostMapping("/updateSaleStr")
-	public String updateSaleStr(@RequestParam Integer id,   @RequestParam String num, @RequestParam Integer qty,  @RequestParam BigDecimal discount, @RequestParam (name="Sale") int sale_id,  @RequestParam (name="ware") int ware_id
+	public String updateSaleStr(@RequestParam Integer id,   @RequestParam String num, @RequestParam Integer qty,  @RequestParam BigDecimal discount, @RequestParam (name="sale") int sale_id,  @RequestParam (name="ware") int ware_id
 			) {
+		Ware ware= wareService.getWareById(ware_id);		
+
+		Sale sale=saleService.getSaleById(sale_id); 		
+
+		saleStrService.updateSaleStr(id,num,qty,ware,sale,discount);		
+		
+		return "redirect:/saleStr";		
+	}
+
+	@PostMapping("/saveSaleStr")
+	public String saveSale(@RequestParam String num, @RequestParam Integer qty,  @RequestParam BigDecimal discount, @RequestParam (name="sale") int sale_id,  @RequestParam (name="ware") int ware_id) {
+
 		Ware ware= wareService.getWareById(ware_id);		
 
 		Sale sale=saleService.getSaleById(sale_id); 
 
-		saleStrService.updateSaleStr(id,num,qty,ware,sale,discount);
-	
-		return "redirect:/sale";
+		try{
+			saleStrService.saveSaleStr(new SaleStr(num,qty,ware,sale,discount));
+		}catch (Exception  ex ){
+			System.out.println("The document can not be changed");          
+		}
+
+		return "redirect:/saleStr";
 	}
 
 
 	@GetMapping("/newSaleStr")
 	public String newSaleStr(Map<String, Object> model,Map<String, Object> model2) {
-
 
 		List<Sale> sale=saleService.findAll();
 		model2.put("sale", sale);	
@@ -93,31 +108,16 @@ public class SaleStrController {
 		List<Ware> wares=wareService.findAll();
 		model.put("wares", wares);
 
-		return "operations/sale/newSale";        
+		return "operations/saleStr/newSaleStr";        
 	}
 
 	@GetMapping("/deleteSaleStr/{id}")
 	public String delete(@PathVariable Integer id) {
 
-		saleService.deleteSale(id);
+		saleStrService.deleteSaleStr(id);
 
 		return "redirect:/saleStr";
 	}
-
-	@PostMapping("/saveSaleStr")
-	public String saveSale(@RequestParam String num, @RequestParam Integer qty,  @RequestParam (name="sale") int sale_id,  @RequestParam (name="ware") int ware_id,BigDecimal discount) {
-
-		Ware ware= wareService.getWareById(ware_id);		
-
-		Sale sale=saleService.getSaleById(sale_id); 
-
-		saleStrService.saveSaleStr(new SaleStr(num,qty,ware,sale,discount));
-
-
-		return "redirect:/sale";
-	}
-
-
 	@PostMapping("/saleStr")
 	public String add(Map<String, Object> model,Map<String, Object> model2 ) {
 

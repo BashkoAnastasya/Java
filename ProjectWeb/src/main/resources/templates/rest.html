@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form class="form-horizontal" th:object="${rest}"
+				th:action="@{/rest}" name="filter_form" id="filter_form"
+				method="post" role="form">
+				<table class="table table-bordered table-hover horizontal-align">
+					<thead>
+						<tr>
+							<th style="width: 100%">Ware</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" class="form-control" id="ware"
+								th:name="ware" maxlength="100" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+	<div th:fragment="clients">
+		<table class="table table-bordered table-hover horizontal-align">
+			<thead>
+				<tr>				
+					<th style="width: 30%">Ware</th>
+					<th style="width: 30%">Qty</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="rest : ${rests}">
+					<td th:text="${rest.ware.name}">Ware</td>
+					<td th:text="${rest.qty}">Qty</td>			
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

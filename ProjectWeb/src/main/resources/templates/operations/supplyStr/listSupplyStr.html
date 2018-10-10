@@ -3,35 +3,63 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="supplyStrs">
- <p>Click <a th:href="@{/newSupplyStr}">here</a> to add SupplyStr.</p>
- <div th:if="${param.error}">Invalid username and password.</div>
+
+	<button type="submit" class="btn btn-primary">Submit</button>
+	<div>
+		<form th:action="@{/newSuppplyWare}" method="get">
+			<input type="submit" value="Add" />
+		</form>
+	</div>
+	<table class="table table-bordered table-hover horizontal-align">
+		<thead>
+			<tr>
+				<th style="width: 50%">Filter ware</th>
+				<th style="width: 50%">Filter supply</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td><input type="text" class="form-control" id="filter_Ware"
+					th:name="filter_Client" maxlength="100" /></td>
+				<td><input type="text" class="form-control" id="filter_Supply"
+					th:name="filter_Supply" maxlength="100" /></td>
+			</tr>
+		</tbody>
+	</table>
 	<table class="table table-bordered table-hover horizontal-align">
 		<thead>
 			<tr>
 				<th style="width: 5%">#</th>
 				<th style="width: 5%">Num</th>
-				<th style="width: 10%">Supply</th>	
-				<th style="width: 10%">Ware</th>					
+				<th style="width: 10%">Supply</th>
+				<th style="width: 10%">Supply state</th>
+				<th style="width: 10%">Ware</th>
 				<th style="width: 5%">Price</th>
 				<th style="width: 10%">Qty</th>
 				<th style="width: 10%">Summa</th>
 				<th style="width: 10%">Nds</th>
 				<th style="width: 10%">Edit</th>
-				<th style="width: 10%">Delete</th>				
+				<th style="width: 10%">Delete</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="supplyStr : ${supplyStrs}">
-				<td th:text="${supplyStr.id}">Id</td>			
+				<td th:text="${supplyStr.id}">Id</td>
 				<td th:text="${supplyStr.num}">Num</td>
 				<td th:text="${supplyStr.supply.code}">Supply</td>
+				<td th:text="${supplyStr.supply.state.state}">Supply state</td>
 				<td th:text="${supplyStr.ware.name}">Ware</td>
-			    <td th:text="${supplyStr.price}">Price</td>
-			    <td th:text="${supplyStr.qty}">Qty</td>
-			    <td th:text="${supplyStr.summa}">Summa</td>	
-			    <td th:text="${supplyStr.nds}">Nds</td>	
-			   <td style="text-align: center"><a th:href="@{'/editSupplyStr/{id}'(id=${supplyStr.id})}"><i class="fa fa-edit" style="font-size:20px"></i></a></td>
-              <td style="text-align: center"><a th:href="@{'/deleteSupplyStr/{id}'(id=${supplyStr.id})}"><i class="fa fa-trash" style="font-size:20px"></i></a></td>			
+				<td th:text="${supplyStr.price}">Price</td>
+				<td th:text="${supplyStr.qty}">Qty</td>
+				<td th:text="${supplyStr.summa}">Summa</td>
+				<td th:text="${supplyStr.nds}">Nds</td>
+				<td style="text-align: center"><a
+						onclick="return(Status(this,3,'/editSupplyStr/'));"><i
+						class="fa fa-edit" style="font-size: 20px"></i></a></td>
+				<td style="text-align: center"><a onclick="return(confirm('Are your sure?'));"
+					th:href="@{'/deleteSupplyStr/{id}'(id=${supplyStr.id})}"><i
+						class="fa fa-trash" style="font-size: 20px"></i></a></td>
 			</tr>
 		</tbody>
 	</table>

@@ -53,16 +53,9 @@ public class ClientServiceImpl implements ClientService{
 	}
 	
 	@Override
-	public List<Client> filter(String filterName,String filterMoniker) {
-	       List<Client> clients;
-
-	        if (filterName != null && !filterName.isEmpty()) {
-	        	clients = repository.findByName(filterName);
-	        } else {
-	        	clients = repository.findAll();
-	        }
-				
-		return  clients;
+	public List <Client> filter(String name,String moniker,String isVip, String town)
+	{	
+		return   repository.filter(name, moniker, isVip,  town);
 	}
 	
 	

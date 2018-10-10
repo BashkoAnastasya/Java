@@ -11,7 +11,7 @@ import com.programmer.gate.repos.WareRepo;
 
 @Service
 public class WareServiceImpl implements WareService{
-	
+
 	private WareRepo repository;
 	@Autowired
 	public void setProductRepository(WareRepo repository) {
@@ -20,7 +20,7 @@ public class WareServiceImpl implements WareService{
 
 	@Override
 	public Ware getWareById(Integer id) {
-		
+
 		return repository.findById(id).orElse(new Ware());
 	}
 
@@ -31,23 +31,31 @@ public class WareServiceImpl implements WareService{
 
 	@Override
 	public void updateWare(Integer id, Models models, String moniker, String name, String szOrig, String szRus) {
-	 Ware ware = repository.findById(id).orElse(new Ware());
-	 ware.setModel(models);
-	 ware.setMoniker(moniker);
-	 ware.setName(name);
-	 ware.setSzOrig(szOrig);
-	 ware.setSzRus(szRus);
-	 repository.save(ware);		
+
+		Ware ware = repository.findById(id).orElse(new Ware());
+		ware.setModel(models);
+		ware.setMoniker(moniker);
+		ware.setName(name);
+		ware.setSzOrig(szOrig);
+		ware.setSzRus(szRus);
+		repository.save(ware);		
 	}
 
 	@Override
 	public void deleteWare(Integer id) {
+
 		repository.deleteById(id);		
 	}
 
 	@Override
-	public List<Ware> findAll() {		
+	public List<Ware> findAll() {	
+
 		return repository.findAll();
+	}
+
+	@Override
+	public List <Ware> filter(String name,String moniker, String szOrig,  String szRus){
+		return repository.filter(name, moniker, szOrig, szRus);
 	}
 
 }

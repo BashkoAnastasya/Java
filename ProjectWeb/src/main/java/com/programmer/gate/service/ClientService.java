@@ -1,6 +1,7 @@
 package com.programmer.gate.service;
 import com.programmer.gate.domain.Client;
 
+
 import java.util.List;
 
 public interface ClientService {
@@ -11,7 +12,7 @@ public interface ClientService {
 	   void deleteClient (Integer id);	   
 	   List<Client> findAll();
 	   List<Client> findByName(String name);
-	   List<Client> filter(String filterName,String filterMoniker);
+	   List <Client> filter(String name,String moniker,String isVip, String town);
 }
 
 

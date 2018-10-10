@@ -13,6 +13,6 @@ public interface SaleService {
 	   void saveSale(Sale Sale);
 	   void updateSale(Integer id, String num, Date dt,Client client,State state, BigDecimal discount);
 	   void deleteSale (Integer id);
-	   List<Sale> findAll();
+	   List<Sale> findAll();	
 	   
 }

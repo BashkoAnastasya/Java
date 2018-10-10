@@ -3,35 +3,72 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="wares">
- <p>Click <a th:href="@{/newWare}">here</a> to add ware.</p>
-	<table class="table table-bordered table-hover horizontal-align">
-		<thead>
-			<tr>
-				<th style="width: 5%">#</th>
-				<th style="width: 5%">Name</th>
-				<th style="width: 10%">Moniker</th>	
-				<th style="width: 10%">Model</th>					
-				<th style="width: 5%">Price</th>
-				<th style="width: 10%">szOrig</th>
-				<th style="width: 10%">szRus</th>			
-				<th style="width: 10%">Edit</th>
-				<th style="width: 10%">Delete</th>				
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="ware : ${wares}">
-				<td th:text="${ware.id}">Id</td>			
-				<td th:text="${ware.name}">Name</td>
-				<td th:text="${ware.moniker}">Moniker</td>
-				<td th:text="${ware.model.name}">Model</td>
-			    <td th:text="${ware.price}">Price</td>
-			    <td th:text="${ware.szOrig}">szOrig</td>
-			    <td th:text="${ware.szRus}">szRus</td>			
-			<td style="text-align: center"><a th:href="@{'/editware/{id}'(id=${ware.id})}"><i class="fa fa-edit" style="font-size:20px"></i></a></td>
-            <td style="text-align: center"><a th:href="@{'/deleteware/{id}'(id=${ware.id})}"><i class="fa fa-trash" style="font-size:20px"></i></a></td>			
-			</tr>
-		</tbody>
-	</table>
+	<form th:action="@{/newWare}" method="get">
+		<input type="submit" value="Add" />
+	</form>
+	<form class="form-horizontal" th:object="${ware}" th:action="@{/ware}"
+		name="filter_form" id="filter_form" method="post" role="form">
+		<button style="width: 5%" type="submit" class="btn btn-primary">Submit</button>
+		<table class="table table-bordered table-hover horizontal-align">
+			<thead>
+				<tr>
+					<th style="width: 20%">Filter name</th>
+					<th style="width: 20%">Filter moniker</th>
+					<th style="width: 20%">Price</th>
+					<th style="width: 20%">szOrig</th>
+					<th style="width: 20%">szRus</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" class="form-control" id="name"
+						th:name="name" maxlength="100" /></td>
+					<td><input type="text" class="form-control" id="moniker"
+						th:name="moniker" maxlength="100" /></td>
+					<td><input type="number" class="form-control" id="price"
+						th:name="price" maxlength="100" /></td>
+					<td><input type="text" class="form-control" id="szOrig"
+						th:name="szOrig" maxlength="100" /></td>
+					<td><input type="text" class="form-control" id="szRus"
+						th:name="szRus" maxlength="100" /></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="table table-bordered table-hover horizontal-align">
+			<thead>
+				<tr>
+					<th style="width: 5%">#</th>
+					<th style="width: 5%">Name</th>
+					<th style="width: 10%">Moniker</th>
+					<th style="width: 10%">Model</th>
+					<th style="width: 5%">Price</th>
+					<th style="width: 10%">szOrig</th>
+					<th style="width: 10%">szRus</th>
+					<th style="width: 10%">Edit</th>
+					<th style="width: 10%">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="ware : ${wares}">
+					<td th:text="${ware.id}">Id</td>
+					<td th:text="${ware.name}">Name</td>
+					<td th:text="${ware.moniker}">Moniker</td>
+					<td th:text="${ware.model.name}">Model</td>
+					<td th:text="${ware.price}">Price</td>
+					<td th:text="${ware.szOrig}">szOrig</td>
+					<td th:text="${ware.szRus}">szRus</td>
+					<td style="text-align: center"><a
+						th:href="@{'/editWare/{id}'(id=${ware.id})}"><i
+							class="fa fa-edit" style="font-size: 20px"></i></a></td>
+					<td style="text-align: center"><a
+						th:href="@{'/deleteWare/{id}'(id=${ware.id})}"><i
+							class="fa fa-trash" style="font-size: 20px"></i></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
 </div>
 
 </html>

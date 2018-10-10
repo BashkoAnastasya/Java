@@ -1,63 +1,73 @@
 <!DOCTYPE html>
 <!--suppress ALL -->
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head"></head>
 <body>
-<div class="container">
-    <div th:replace="fragments/header :: header"></div>
-    <div class="container">
-        <form class="form-horizontal" th:object="${supplier}" th:action="@{/filter}" name="filter_form" id="filter_form"
-              method="post" role="form">
-				<div>
-					<table class="table table-bordered table-hover horizontal-align">
-						<thead>
-							<tr>
-								<th style="width: 10%">Filter Name</th>
-								<th style="width: 5%">Filter Moniker</th>
-							</tr>
-						</thead>
 
-						<tbody>
-							<tr>
-								<div class="form-group">
-									<th> <input type="text" class="form-control" id="filter_name"
-										th:name="filter_name" maxlength="100" /> </th> 
-										
-										 <th> <input type="text"
-										class="form-control" id="filter_moniker"
-										th:name="filter_moniker" maxlength="100" /> </th>
-								</div>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-    <p>Click <a th:href="@{/new}">here</a> to add supplier.</p>
-</div>
-<div th:fragment="suppliers">
-    <table class="table table-bordered table-hover horizontal-align">
-        <thead>
-        <tr>
-            <th style="width: 5%">#</th>
-            <th style="width: 20%">Name</th>  
-            <th style="width: 20%">Moniker</th>              
-            <th style="width: 5%">Edit</th>
-            <th style="width: 5%">Delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="supplier : ${suppliers}">
-            <td th:text="${supplier.id}" style="text-align: center">#</td>
-            <td th:text="${supplier.name}">Name</td> 
-            <td th:text="${supplier.moniker}">Moniker</td>           
-            <td style="text-align: center"><a th:href="@{'/edit/{id}'(id=${supplier.id})}"><i class="fa fa-edit" style="font-size:20px"></i></a></td>
-            <td style="text-align: center"><a th:href="@{'/delete/{id}'(id=${supplier.id})}"><i class="fa fa-trash" style="font-size:20px"></i></a></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+
+		<form class="form-filter" th:object="${supplier}"
+			th:action="@{/filter}" name="filter_form" id="filter_form"
+			method="post" role="form">
+
+			<div>
+				<button style="width: 5%" type="submit">Filter</button>
+			</div>
+
+			<table class="table table-bordered table-hover horizontal-align">
+				<thead>
+					<tr>
+						<th style="width: 20%">Filter name</th>
+						<th style="width: 20%">Filter moniker</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" class="form-control" id="name"
+							th:name="name" maxlength="100" /></td>
+						<td><input type="text" class="form-control" id="moniker"
+							th:name="moniker" maxlength="100" /></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</form>
+
+		<div>
+			<div th:fragment="suppliers">
+				<table class="table table-bordered table-hover horizontal-align2">
+					<thead>
+						<tr>
+							<th style="width: 5%">#</th>
+							<th style="width: 20%">Name</th>
+							<th style="width: 20%">Moniker</th>
+							<th style="width: 5%">Edit</th>
+							<th style="width: 5%">Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="supplier : ${suppliers}">
+							<td th:text="${supplier.id}" style="text-align: center">#</td>
+							<td th:text="${supplier.name}">Name</td>
+							<td th:text="${supplier.moniker}">Moniker</td>
+							<td style="text-align: center"><a
+								th:href="@{'/edit/{id}'(id=${supplier.id})}"><i
+									class="fa fa-edit" style="font-size: 20px"></i></a></td>
+							<td style="text-align: center"><a onclick="return(confirm('Are your sure?'));"							                                
+								th:href="@{'/delete/{id}'(id=${supplier.id})}"><i
+									class="fa fa-trash" style="font-size: 20px"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+						<div>
+			<form th:action="@{/new}" method="get">
+				<input type="submit" value="Add" />
+			</form>
+		</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

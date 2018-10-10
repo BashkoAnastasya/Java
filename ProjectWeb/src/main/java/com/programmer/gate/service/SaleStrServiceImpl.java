@@ -16,19 +16,22 @@ import org.springframework.stereotype.Service;
 public class SaleStrServiceImpl implements SaleStrService {
 	
 	private SaleStrRepo repository;
+	
 	@Autowired
 	public void setProductRepository(SaleStrRepo repository) {
 		this.repository = repository;
 	}
+	
 	@Override
 	public SaleStr getSaleStrById(Integer id) {		
 		return repository.findById(id).orElse(new SaleStr());
 	}
+	
 	@Override
 	public void saveSaleStr(SaleStr SaleStr) {
-		repository.save(SaleStr);
-		
+		repository.save(SaleStr);		
 	}
+	
 	@Override
 	public void updateSaleStr(Integer id, String num, Integer qty, Ware ware, Sale sale,BigDecimal discount) {
 		SaleStr saleStrUpdate= repository.findById(id).orElse(new SaleStr());
@@ -48,6 +51,11 @@ public class SaleStrServiceImpl implements SaleStrService {
 	@Override
 	public List<SaleStr> findAll() {		
 		return repository.findAll();
+	}
+	
+	@Override
+	public List<SaleStr> findBySale(Sale sale) {		
+		return repository.findBySale(sale);
 	}
 		
 	

@@ -46,7 +46,6 @@ public class SaleStr {
 	@Column (name="discount")
 	private BigDecimal discount;
 
-
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE, CascadeType.PERSIST })
 	@JoinColumn(name = "sale_id", nullable = false)
 	private Sale sale;

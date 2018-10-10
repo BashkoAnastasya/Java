@@ -37,7 +37,7 @@ public class RestHist {
 	private Date dend;	
 	
 	@Column(name = "qty")
-	private Number qty;	
+	private Integer qty;	
 
 	public RestHist() {
 		

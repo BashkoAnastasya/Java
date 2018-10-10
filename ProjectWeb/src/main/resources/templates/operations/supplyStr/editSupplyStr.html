@@ -26,25 +26,33 @@
 						</tr>
 					</thead>
 					<tbody>
-						<div class="form-group">
-							<input type="text" class="form-control" id="num" th:name="num"
-								th:value="num" maxlength="100" /> <select th:field="*{supply}">
-								<option th:each="supply : ${supplys}" th:value="${supply.id}"
-									th:text="${supply.num}"></option>
-							</select> <select th:field="*{ware}">
-								<option th:each="ware : ${wares}" th:value="${ware.id}"
-									th:text="${ware.name}"></option>
-							</select> <input type="number" class="form-control" id="price"
-								th:name="price" th:value="*{price}" maxlength="100" /> <input
-								type="number" class="form-control" id="qty" th:name="qty"
-								th:value="*{qty}" maxlength="100" /> 
-								<input disabled
-								type="number" class="form-control" id="summa" th:name="summa"
-								th:value="*{summa}" maxlength="100" /> 
-								<input disabled
-								type="number" class="form-control" id="nds" th:name="nds"
-								th:value="*{nds}" maxlength="100" />
-						</div>
+						<tr>
+							<td><input type="text" class="form-control" id="num"
+								th:name="num" th:value="num" maxlength="100" /></td>
+
+							<td><select th:field="*{supply}">
+									<option th:each="supply : ${supplys}" th:value="${supply.id}"
+										th:text="${supply.num}"></option>
+							</select></td>
+
+							<td><select th:field="*{ware}">
+									<option th:each="ware : ${wares}" th:value="${ware.id}"
+										th:text="${ware.name}"></option>
+							</select></td>
+							
+							<td><input type="number" class="form-control" id="price"
+								th:name="price" th:value="*{price}" maxlength="100" /></td>
+								
+							<td><input type="number" class="form-control" id="qty"
+								th:name="qty" th:value="*{qty}" maxlength="100" /></td>
+								
+							<td><input disabled type="number" class="form-control"
+								id="summa" th:name="summa" th:value="*{summa}" maxlength="100" />
+							</td>
+							
+							<td><input disabled type="number" class="form-control"
+								id="nds" th:name="nds" th:value="*{nds}" maxlength="100" /></td>
+						</tr>
 					</tbody>
 				</table>
 				<button type="submit" class="btn btn-primary">Submit</button>

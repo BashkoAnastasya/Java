@@ -37,20 +37,20 @@ public class ClientController {
 
 		model.put("clients", clients);
 
-		return "operations/client/filter";
+		return "operations/client/filterClient";
 	}
 
 
 	@PostMapping("/filterClient")
-	public String filter(@RequestParam String filter_name, @RequestParam String filter_moniker, Map<String, Object> model) {
+	public String filter(@RequestParam String name, @RequestParam String moniker, @RequestParam String isVip,@RequestParam String town, Map<String, Object> model) {
 
 		Iterable<Client> clients;
 
-		clients=clientService.filter(filter_name, filter_moniker);
+		clients=clientService.filter(name, moniker, isVip, town);
 
 		model.put("clients", clients);
 
-		return "operations/client/filter";
+		return "operations/client/filterClient";
 	}
 
 
@@ -61,7 +61,7 @@ public class ClientController {
 
 		model.addAttribute("client", client);
 
-		return "operations/client/edit";
+		return "operations/client/editClient";
 	}
 
 	@PostMapping("/updateClient")
@@ -69,23 +69,23 @@ public class ClientController {
 			@RequestParam String isVip,@RequestParam String town) {
 		clientService.updateClient(id, name, moniker,isVip,town);
 
-		return "redirect:/client";
+		return "redirect:/filterClient";
 	}
 
 
 	@GetMapping("/newClient")
 	public String newClient() {
 
-		return "operations/client/new";        
+		return "operations/client/newClient";        
 	}
-	
+
 	@PostMapping("/saveClient")
 	public String updateClient( @RequestParam String name,@RequestParam String moniker,
 			@RequestParam String isVip,@RequestParam String town,@RequestParam Dept dept) {
 
 		clientService.saveClient(new Client(name, moniker,dept,isVip,town));
 
-		return "redirect:/operations/client/list";
+		return "redirect:/operations/client/listClient";
 	}
 
 	@GetMapping("/deleteClient/{id}")
@@ -93,9 +93,8 @@ public class ClientController {
 
 		clientService.deleteClient(id);	
 
-		return "redirect:/operations/client/list";
+		return "redirect:/operations/client/listClient";
 	}    
-
 
 
 

@@ -83,6 +83,21 @@ public class SupplyStrController {
 		return "redirect:/supplyStr";		
 	}
 
+	@PostMapping("/saveSupplyStr")
+	public String saveSupply(@RequestParam String num, @RequestParam Integer qty,  @RequestParam BigDecimal price, @RequestParam (name="supply") int supply_id,  @RequestParam (name="ware") int ware_id) {
+
+		Ware ware= wareService.getWareById(ware_id);		
+
+		Supply supply=supplyService.getSupplyById(supply_id); 
+
+		try{
+			supplyStrService.saveSupplyStr(new SupplyStr(num,price,qty,ware,supply));
+		}catch (Exception  ex ){
+			System.out.println("The document can not be changed");          
+		}
+
+		return "redirect:/supplyStr";
+	}
 
 	@GetMapping("/newSupplyStr")
 	public String newSupplyStr(Map<String, Object> modelSupply,Map<String, Object> modelWare) {
@@ -105,21 +120,6 @@ public class SupplyStrController {
 		return "redirect:/supplyStr";
 	}
 
-	@PostMapping("/saveSupplyStr")
-	public String saveSupply(@RequestParam String num, @RequestParam Integer qty,  @RequestParam BigDecimal price, @RequestParam (name="supply") int supply_id,  @RequestParam (name="ware") int ware_id) {
-
-		Ware ware= wareService.getWareById(ware_id);		
-
-		Supply supply=supplyService.getSupplyById(supply_id); 
-
-		try{
-			supplyStrService.saveSupplyStr(new SupplyStr(num,price,qty,ware,supply));
-		}catch (Exception  ex ){
-			System.out.println("The document can not be changed");          
-		}
-
-		return "redirect:/supplyStr";
-	}
 
 
 	@PostMapping("/supplyStr")

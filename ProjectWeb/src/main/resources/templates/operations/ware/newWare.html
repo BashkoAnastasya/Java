@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <!--suppress ALL -->
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head"></head>
 <body>
-<div class="container">
-    <div th:replace="fragments/header :: header"></div>
-    <div class="container">
-        <form class="form-horizontal" th:object="${ware}"  th:action="@{/saveWare}" name="input_form" id="input_form"
-              method="post" role="form">
-            <div class="form-group">
-                <input type="text" class="form-control" id="name" th:name="name" placeholder="Enter your name ware." maxlength="100"/>
-                <input type="text" class="form-control" id="moniker" th:name="moniker" placeholder="Enter your moniker" maxlength="100"/>               
-                <select id="model" name="model">
-						<option th:each="model : ${models}"
-						th:value="${model.id}" th:text="${model.name}"></option>
-				</select>	
-				<input type="text" class="form-control" id="szOrig" th:name="szOrig" placeholder="Enter your szOrig" maxlength="100"/> 	
-				<input type="text" class="form-control" id="szRus" th:name="szRus" placeholder="Enter your szRus" maxlength="100"/> 			
-				</div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-</div>
+	<div class="container">
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form class="form-horizontal" th:object="${ware}"
+				th:action="@{/saveWare}" name="input_form" id="input_form"
+				method="post" role="form">
+				<table class="table table-bordered table-hover horizontal-align">
+					<thead>
+						<tr>
+						
+							<th style="width: 20%">Name</th>
+							<th style="width: 20%">Moniker</th>
+							<th style="width: 20%">Model</th>						
+							<th style="width: 20%">szOrig</th>
+							<th style="width: 20%">szRus</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" class="form-control" id="name"
+								th:name="name" placeholder="Enter your name ware."
+								 /></td>
+							<td><input type="text" class="form-control" id="moniker"
+								th:name="moniker" placeholder="Enter your moniker"
+								 /></td>
+							<td><select  id="model" name="model">
+									<option th:each="model : ${models}" th:value="${model.id}"
+										th:text="${model.name}"></option>
+							</select></td>
+							<td><input type="text" class="form-control" id="szOrig"
+								th:name="szOrig" placeholder="Enter your szOrig"  />
+							</td>
+							<td><input type="text" class="form-control" id="szRus"
+								th:name="szRus" placeholder="Enter your szRus"  />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.programmer.gate.service;
 import com.programmer.gate.service.SaleService;
 import com.programmer.gate.domain.Client;
 import com.programmer.gate.domain.Sale;
+
 import com.programmer.gate.repos.SaleRepo;
 import com.programmer.gate.domain.State;
 
@@ -51,6 +52,8 @@ public class SaleServiceImpl implements SaleService{
 	public List<Sale> findAll() {	
 		return (List<Sale>) repository.findAll();
 	}
+	
+
 	
 
 }

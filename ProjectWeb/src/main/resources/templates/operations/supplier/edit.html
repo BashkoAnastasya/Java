@@ -16,23 +16,32 @@
 				<table class="table table-bordered table-hover horizontal-align">
 					<thead>
 						<tr>
-
-							<th style="width: 10%">Name</th>
-							<th style="width: 5%">Moniker</th>
+							<th style="width: 50%">Name</th>
+							<th style="width: 50">Moniker</th>
 						</tr>
 					<thead>
 					<tbody>
-						<th> <input type="text" class="form-control" id="name"
-							th:name="name" th:value="*{name}" maxlength="100" /></th>
-						<th> <input type="text" class="form-control" id="moniker"
-							th:name="moniker" th:value="*{moniker}" maxlength="100" /></th>
-
+					<tr>
+						<td> <input type="text" class="form-control" id="name"
+							th:name="name" th:value="*{name}" maxlength="100" /></td>
+						<td> <input type="text" class="form-control" id="moniker"
+							th:name="moniker" th:value="*{moniker}" maxlength="100" /></td>
+						</tr>
 					</tbody>
 				</table>
-
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
 		</div>
 </div>
+
+<script th:inline="javascript">
+/*<![CDATA[*/
+
+    var message =
+    console.log(message);
+
+/*]]>*/
+</script>
+
 </body>
 </html>

@@ -27,7 +27,7 @@ public class Rest {
 	private Ware ware;
 	
 	@Column(name = "qty")
-	private Number qty;	
+	private Integer qty;	
 
 	public Rest() {
 		
