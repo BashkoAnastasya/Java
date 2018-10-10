@@ -7,8 +7,7 @@
 		}
 
 		function Status(obj,intex,link) {
-			var tr = getParentNode(obj, 'TR');
-			var message = [[${sale.dt}]];			
+			var tr = getParentNode(obj, 'TR');			
 			if (tr.cells[intex].innerHTML == 'Актуальный') {
 				alert('Cannot change the current document')
 			}
