@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="eng" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header">
+	<nav class="navbar-default navbar-fixed-top">
+		<div class="container">
+			<nav>
+				<ul class="topmenu">
+
+					<li><a href="" class="down">Directory</a>
+						<ul class="submenu">
+							<li><a href="supplier.html" th:href="@{/filter}">Supplier</a></li>
+							<li><a href="ware.html" th:href="@{/ware}">Ware</a></li>
+							<li><a href="client.html" th:href="@{/filterClient}">Client</a></li>
+						</ul></li>
+
+					<li><a href="" class="down">Documents</a>
+						<ul class="submenu">
+							<li><a href="priceWare.html" th:href="@{/priceWare}">Price
+									ware</a></li>
+							<li><a href="sale.html" th:href="@{/sale}">Sale </a></li>
+							<li><a href="supply.html" th:href="@{/supply}">Supply </a></li>
+							<li><a href="saleStr.html" th:href="@{/saleStr}">SaleStr
+							</a></li>
+							<li><a href="supplyStr.html" th:href="@{/supplyStr}">SupplyStr
+							</a></li>
+						</ul></li>
+
+					<li><a href="" class="down">Reports</a>
+						<ul class="submenu">
+							<li><a href="rest.html" th:href="@{/rest}">Aclual rest</a></li>
+							<li><a href="restHist.html" th:href="@{/restHist}">History
+									rest</a></li>
+						</ul></li>
+					<li>
+						<form th:action="@{/logout}" method="post">
+							<input id=out style="width: 100%"  type="submit" value="Sign Out" />
+						</form>
+					</li>
+					<li><input type="search" class="form-control" id="find"
+						th:name="find" placeholder="Search..." style="width: 80%" /></li>
+					<li>
+						<form th:action="@{/snake}" method="get">
+							<input  style="width: 100%"  type="submit" value="Game" />
+						</form>
+					</li>					
+				</ul>
+			</nav>
+		</div>
+	</nav>
+</div>
+</html>
+
+
+
+
+
+
+

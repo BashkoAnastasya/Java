@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Snake</title>
+<style>
+#snake {
+	display: inline-block;
+	border: 2px solid #000;
+	line-height: 0px;
+	background: #000;
+    float: left;	
+	margin: auto;
+	text-align: center;
+}
+
+#snake b, #snake i, #snake s {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: #000;
+	border: 1px solid #333;
+}
+
+#snake i {
+	background: #fff;
+	border-color: #999;
+}
+
+#snake s {
+	background: #ff0;
+	border-color: #999;
+}
+
+#start-btn {
+	display: block;
+	width: 40%;
+	margin: 30% auto 0;
+	padding: 20px;
+	background: #eee;
+	text-align: center;
+	cursor: pointer;
+}
+
+#start-btn:hover {
+	background: #fff;
+	
+}
+
+input {
+	float: left display: inline-block;
+	margin:5px;
+}
+</style>
+
+</head>
+<body>
+	<div >
+		<div id="snake">
+			<span id="start-btn">START</span>
+		</div>
+
+		<div>
+			<input type="number" id="row" size="20" value=6>
+		</div>
+		<div>
+			<input type="number" id="collum" size="20" value=6>
+		</div>
+
+	</div>
+	<script src="../../script/snake.js"></script>
+
+</body>
+</html>

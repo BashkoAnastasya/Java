@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+		<div th:replace="fragments/header :: header"></div>
+		<form class="form-horizontal" th:object="${supplier}"
+			th:action="@{/save}" name="input_form" id="input_form" method="post"
+			role="form">
+
+			<table class="table table-bordered table-hover horizontal-align2">
+				<thead>
+					<tr>						
+						<th style="width: 20%">Name</th>
+						<th style="width: 20%">Moniker</th>				
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th><input type="text" class="form-control" id="name"
+							th:name="name" placeholder="Enter your name supplier."
+							maxlength="100" /></th>
+						<th><input type="text" class="form-control" id="moniker"
+							th:name="moniker" placeholder="Enter your moniker supplier."
+							maxlength="100" />
+					</tr>
+				</tbody>
+			</table>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+</body>
+</html>

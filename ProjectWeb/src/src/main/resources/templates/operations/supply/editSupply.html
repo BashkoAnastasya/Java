@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form class="form-horizontal" th:object="${supply}"
+				th:action="@{/updateSupply}" name="edit_form" id="edit_form"
+				method="post" role="form">
+				<div class="form-group">
+					<input type="hidden" id="id" th:name="id" th:value="*{id}" />
+				</div>
+				<table class="table table-bordered table-hover horizontal-align">
+					<thead>
+						<tr>
+							<th style="width: 20%">Num</th>
+							<th style="width: 20%">Code</th>
+							<th style="width: 20%">Date</th>
+							<th style="width: 20%">Supplier</th>
+							<th style="width: 20%">State</th>
+						
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" class="form-control" id="num"
+								th:name="num" th:value="*{num}" maxlength="100" /></td>
+							<td><input type="text" class="form-control" id="code"
+								th:name="code" th:value="*{code}" maxlength="100" /></td>
+							<td><input type="datetime-local" class="form-control"
+								id="dt" th:name="dt" th:value="*{dt}" maxlength="100" /></td>
+							<td><select th:field="*{supplier}">
+									<option th:each="supplier : ${suppliers}"
+										th:value="${supplier.id}" th:text="${supplier.name}"></option>
+							</select></td>
+							<td><select th:field="*{state}">
+									<option th:each="state : ${states}" th:value="${state.id}"
+										th:text="${state.state}"></option>
+							</select></td>
+						</tr>
+					</tbody>
+				</table>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

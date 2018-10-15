@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form class="form-horizontal" th:object="${priceWare}"
+				th:action="@{/savePriceWare}" name="input_form" id="input_form"
+				method="post" role="form">
+				<div class="form-group">
+					<table class="table table-bordered table-hover horizontal-align">
+						<thead>
+							<tr>
+								<th style="width: 5%">Price</th>
+								<th style="width: 5%">Date begin</th>
+								<th style="width: 5%">Date end</th>
+								<th style="width: 10%">Ware</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="number" class="form-control" id="price"
+									th:name="price" placeholder="Enter your price" maxlength="100" /></td>
+								<td><input type="date" class="form-control" id="dbeg"
+									th:name="dbeg" placeholder="Enter your dbeg" maxlength="100" />
+								</td>
+								<td><input type="date" class="form-control" id="dend"
+									th:name="dend" placeholder="Enter your dend" maxlength="100" />
+								</td>
+								<td><select id="ware" name="ware">
+										<option th:each="ware : ${wares}" th:value="${ware.id}"
+											th:text="${ware.name}"></option>
+								</select></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

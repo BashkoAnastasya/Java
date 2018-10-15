@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/header :: header"></div>
+		<form class="form-horizontal" th:object="${supplyStr}"
+			th:action="@{/saveSupplyStr}" name="input_form" id="input_form"
+			method="post" role="form">
+			<table class="table table-bordered table-hover horizontal-align">
+				<thead>
+					<tr>
+						<th style="width: 20%">Num</th>
+						<th style="width: 20%">QTY</th>
+						<th style="width: 20%">Supply</th>
+						<th style="width: 20%">Ware</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" class="form-control" id="num"
+							th:name="num" placeholder="Enter your num" maxlength="100" /></td>
+
+						<td><input type="number" class="form-control" id="qty"
+							th:name="qty" placeholder="Enter your qty" maxlength="100" /></td>
+
+						<td><select id="supply" name="supply">
+								<option th:each="supply : ${supplys}" th:value="${supply.id}"
+									th:text="${supply.num}"></option>
+						</select></td>
+						<td><select id="ware" name="ware">
+								<option th:each="ware : ${wares}" th:value="${ware.id}"
+									th:text="${ware.name}"></option>
+						</select></td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</body>
+</html>

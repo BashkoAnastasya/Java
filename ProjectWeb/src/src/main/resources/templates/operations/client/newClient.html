@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form class="form-horizontal" th:object="${client}"
+				th:action="@{/save}" name="input_form" id="input_form" method="post"
+				role="form">
+				<div class="form-group">
+					<table class="table table-bordered table-hover horizontal-align2">
+						<thead>
+							<tr>
+								<th style="width: 20%">Name</th>
+								<th style="width: 20%">Moniker</th>
+								<th style="width: 20%">IsVip</th>
+								<th style="width: 20%">Town</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="text" class="form-control" id="name"
+									th:name="name" placeholder="Enter your name client."
+									maxlength="100" /></td>
+								<td><input type="text" class="form-control" id="moniker"
+									th:name="moniker" placeholder="Enter your moniker client."
+									maxlength="100" /></td>
+								<td><input type="text" class="form-control" id="IsVip"
+									th:name="IsVip" placeholder="Enter your IsVip client."
+									maxlength="100" /></td>
+								<td><input type="text" class="form-control" id="Town"
+									th:name="Town" placeholder="Enter your Town client."
+									maxlength="100" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

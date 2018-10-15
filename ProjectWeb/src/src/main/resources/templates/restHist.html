@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form class="form-horizontal" th:object="${restHist}"
+				th:action="@{/restHist}" name="filter_form" id="filter_form"
+				method="post" role="form">
+				<table class="table table-bordered table-hover horizontal-align">
+					<thead>
+						<tr>
+							<th style="width: 33%">Ware</th>
+							<th style="width: 33%">Date begin</th>
+							<th style="width: 33%">Date end</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" class="form-control" id="wareName"
+								th:name="wareName" maxlength="100" /></td>
+							<td><input type="date" class="form-control" id="dbeg"
+								th:name="dbeg" maxlength="100" /></td>
+							<td><input type="date" class="form-control" id="dend"
+								th:name="dend" maxlength="100" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<div id="filter">
+					<button style="width: 50%" type="submit">Filter</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div th:fragment="clients">
+		<table class="table table-bordered table-hover horizontal-align">
+			<thead>
+				<tr>
+					<th style="width: 25%">Ware</th>
+					<th style="width: 25%">Qty</th>
+					<th style="width: 25%">Date begin</th>
+					<th style="width: 25%">Date end</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="restHist : ${restHists}">
+					<td th:text="${restHist.ware.name}">Ware</td>
+					<td th:text="${restHist.qty}">Date begin</td>
+					<td th:text="${restHist.dbeg}">Date end</td>
+					<td th:text="${restHist.dend}">Date end</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

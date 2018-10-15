@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="priceWares">
+	<div id=add>
+		<form th:action="@{/newPriceWare}" method="get">
+			<input type="submit" value="Add" />
+		</form>
+	</div>
+	<div id="filter">
+		<button style="width: 50%" type="submit">Filter</button>
+	</div>
+	<table class="table table-bordered table-hover horizontal-align">
+		<thead>
+			<tr>
+				<th style="width: 33%">Filter Ware</th>
+				<th style="width: 33%">Filter date begin</th>
+				<th style="width: 33%">Filter date end</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td><input type="text" class="form-control" id="filter_Ware"
+					th:name="filter_Ware" maxlength="100" /></td>
+				<td><input type="text" class="form-control" id="filter_dbeg"
+					th:name="filter_dbeg" maxlength="100" /></td>
+				<td><input type="text" class="form-control" id="filter_dend"
+					th:name="filter_dend" maxlength="100" /></td>
+
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="table table-bordered table-hover horizontal-align">
+		<thead>
+			<tr>
+				<th style="width: 5%">#</th>
+				<th style="width: 10%">Ware</th>
+				<th style="width: 5%">Date begin</th>
+				<th style="width: 5%">Date end</th>
+				<th style="width: 10%">Price</th>
+				<th style="width: 10%">Edit</th>
+				<th style="width: 10%">Delete</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="priceWare : ${priceWares}">
+				<td th:text="${priceWare.id}">Id</td>
+				<td th:text="${priceWare.ware.name}">Ware</td>
+				<td th:text="${priceWare.dbeg}">DateBeg</td>
+				<td th:text="${priceWare.dend}">DateEnd</td>
+				<td th:text="${priceWare.price}">Price</td>
+				<td style="text-align: center"><a
+					th:href="@{'/editPriceWare/{id}'(id=${priceWare.id})}"><i
+						class="fa fa-edit" style="font-size: 20px"></i></a></td>
+				<td style="text-align: center"><a
+					onclick="return(confirm('Are your sure?'))"  th:href="@{'/deletePriceWare/{id}'(id=${priceWare.id})}"><i
+						class="fa fa-trash" style="font-size: 20px"></i></a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</html>

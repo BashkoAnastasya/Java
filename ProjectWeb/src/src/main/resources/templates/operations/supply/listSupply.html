@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="supplys">
+	<div id="filter">
+			<button style="width: 50%" type="submit">Filter</button>
+		</div>
+	<div id=add>
+		<form th:action="@{/newSupply}" method="get">
+			<input type="submit" value="Add" />
+		</form>
+	</div>
+	<table class="table table-bordered table-hover horizontal-align">
+		<thead>
+			<tr>
+				<th style="width: 25%">Filter supplier</th>
+				<th style="width: 25%">Filter state</th>
+				<th style="width: 25%">Filter num</th>
+				<th style="width: 25%">Filter dt</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td><input type="text" class="form-control" id="filter_Client"
+					th:name="filter_Client" maxlength="100" /></td>
+				<td><input type="text" class="form-control" id="filter_State"
+					th:name="filter_State" maxlength="100" /></td>
+				<td><input type="text" class="form-control" id="filter_Num"
+					th:name="filter_Num" maxlength="100" /></td>
+				<td><input type="date" class="form-control" id="filter_Dt"
+					th:name="filter_Dt" maxlength="100" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="table table-bordered table-hover horizontal-align">
+		<thead>
+			<tr>
+				<th style="width: 5%">#</th>
+				<th style="width: 10%">Code</th>
+				<th style="width: 10%">Num</th>
+				<th style="width: 5%">Date</th>
+				<th style="width: 5%">Supplier</th>
+				<th style="width: 10%">State</th>
+				<th style="width: 10%">Summa</th>
+				<th style="width: 10%">NDS</th>
+				<th style="width: 10%">Edit</th>
+				<th style="width: 10%">Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="supply : ${supplys}">
+				<td th:text="${supply.id}">Id</td>
+				<td th:text="${supply.code}">Code</td>
+				<td th:text="${supply.num}">Num</td>
+				<td th:text="${supply.dt}">Date</td>
+				<td th:text="${supply.supplier.name}">Supplier</td>
+				<td th:text="${supply.state.state}">State</td>
+				<td th:text="${supply.summa}">Summa</td>
+				<td th:text="${supply.nds}">NDS</td>
+				<td style="text-align: center"><a
+						onclick="return(Status(this,4,'/editSupply/'));"><i
+						class="fa fa-edit" style="font-size: 20px"></i></a></td>
+				<td style="text-align: center"><a onclick="return(confirm('Are your sure?'));"
+					  th:href="@{'/deleteSupply/{id}'(id=${supply.id})}"><i
+						class="fa fa-trash" style="font-size: 20px"></i></a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</html>

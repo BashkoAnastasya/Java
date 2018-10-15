@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form class="form-horizontal" th:object="${sale}"
+				th:action="@{/saveSale}" name="input_form" id="input_form"
+				method="post" role="form">
+				<div class="form-group">
+					<table id="table2"
+						class="table table-bordered table-hover horizontal-align">
+						<thead>
+							<tr>
+								<th style="width: 10%">Num</th>
+								<th style="width: 5%">Date</th>
+								<th style="width: 5%">Client</th>
+								<th style="width: 10%">State</th>
+								<th style="width: 10%">Discount</th>				
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+
+								<td><input type="text" class="form-control" id="num"
+									th:name="num" placeholder="Enter your num" maxlength="100" /></td>
+								<td><input type="date" class="form-control" id="dt"
+									th:name="dt" placeholder="Enter your dt" maxlength="100" /></td>
+								<td><select id="client" name="client">
+										<option th:each="client : ${clients}" th:value="${client.id}"
+											th:text="${client.name}"></option>
+								</select></td>
+								<td><select id="state" name="state">
+										<option th:each="state : ${states}" th:value="${state.id}"
+											th:text="${state.state}"></option>
+								</select></td>
+								<td><input type="text" class="form-control" id="discount"
+									th:name="discount" placeholder="Enter your num" maxlength="100" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+	<script th:inline="javascript">
+	/*<![CDATA[*/
+
+	var clients = /*[[${clients}]]*/null;
+	var selectedIndex = $("#client option:selected").index();
+	var service = services[selectedIndex];
+	console.log(message);
+
+	/*]]>*/
+</script>
+
+
+</body>
+</html>
